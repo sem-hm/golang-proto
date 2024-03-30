@@ -1,9 +1,9 @@
 FROM mcr.microsoft.com/devcontainers/go:1-1.22-bookworm
 
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends postgresql-client \
-#     && apt install apt-transport-https curl gnupg -y\
-#     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends postgresql-client \
+    && apt install apt-transport-https curl gnupg -y\
+    && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # RUN curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
 # RUN mv bazel-archive-keyring.gpg /usr/share/keyrings &&\
