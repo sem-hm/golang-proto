@@ -1,0 +1,4 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix sem-hm/golang-proto
+gazelle(name = "gazelle")

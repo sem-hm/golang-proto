@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "database",
+    srcs = ["postgres.go"],
+    importpath = "sem-hm/golang-proto/database",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//models",
+        "@com_github_lib_pq//:pq",
+    ],
+)

@@ -1,0 +1,31 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "studentpb_proto",
+    srcs = ["student.proto"],
+    visibility = ["//visibility:public"],
+)
+
+go_proto_library(
+    name = "studentpb_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "sem-hm/golang-proto",
+    proto = ":studentpb_proto",
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "golang-proto",
+    embed = [":studentpb_go_proto"],
+    importpath = "sem-hm/golang-proto",
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "studentpb",
+    embed = [":studentpb_go_proto"],
+    importpath = "sem-hm/golang-proto/studentpb",
+    visibility = ["//visibility:public"],
+)
